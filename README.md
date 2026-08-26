@@ -1,7 +1,7 @@
-# Array Primitives
+# Array
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
-[![CI](https://github.com/swift-primitives/swift-array-primitives/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-primitives/swift-array-primitives/actions/workflows/ci.yml)
+[![CI](https://github.com/swift-molecules/swift-array/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-molecules/swift-array/actions/workflows/ci.yml)
 
 A growable array generic over its storage **column** — `Array<S>` composes any contiguous buffer column, and copyability flows from the column rather than from per-array machinery. The element-generic surface (subscript, `count`, `append`, `remove`, `swap`, span access) is written once against the column seam; only growth and construction specialize per column.
 
@@ -21,7 +21,7 @@ The two ratified columns answer the ownership question at the type level. `Colum
 ## Quick Start
 
 ```swift
-import Array_Primitives
+import Array
 
 // Move-only by default: the array owns its heap storage outright — no implicit copies.
 var log = Array<Int>()
@@ -46,7 +46,7 @@ Add the dependency to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-array-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-array.git", branch: "main")
 ]
 ```
 
@@ -56,7 +56,7 @@ Add a product to your target:
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Array Primitives", package: "swift-array-primitives")
+        .product(name: "Array", package: "swift-array")
     ]
 )
 ```
@@ -69,11 +69,11 @@ The package is pre-1.0 — depend on `branch: "main"` until `0.1.0` is tagged. R
 
 | Product | Contents | When to import |
 |---------|----------|----------------|
-| `Array Primitives` | Umbrella — `Array<E>`, `Array<E>.Shared`, and the `Collection` / `Sequence` conformances | Most consumers |
+| `Array` | Umbrella — `Array<E>`, `Array<E>.Shared`, and the `Collection` / `Sequence` conformances | Most consumers |
 | `Array Primitive` | The `__Array<S>` carrier and its front-door aliases (`Array<E>`, `Array<E>.Shared`), without the conformances | Move-only use that must not pull in conformance machinery |
-| `Array Protocol Primitives` | The array seam protocol that `__Array<S>` conforms to | Writing code generic over array-like storage |
+| `Array Protocol` | The array seam protocol that `__Array<S>` conforms to | Writing code generic over array-like storage |
 | `Array Small Primitive` | `Array<E>.Small<n>`, the inline-until-it-spills allocation variant ([DS-027].1) | Consumers who need a byte-budgeted inline buffer, e.g. `json` |
-| `Array Primitives Test Support` | Re-exported test-support helpers for consumers testing against `Array Primitives` | Test targets only |
+| `Array Test Support` | Re-exported test-support helpers for consumers testing against `Array` | Test targets only |
 
 ---
 
@@ -91,11 +91,11 @@ The package is pre-1.0 — depend on `branch: "main"` until `0.1.0` is tagged. R
 
 ## Related Packages
 
-- [`swift-buffer-primitives`](https://github.com/swift-primitives/swift-buffer-primitives) / [`swift-buffer-linear-primitives`](https://github.com/swift-primitives/swift-buffer-linear-primitives) — the contiguous linear buffer the front doors pin to.
-- [`swift-storage-primitives`](https://github.com/swift-primitives/swift-storage-primitives) — the `Store.Protocol` / `Storage.Contiguous` seam the buffer is generic over.
-- [`swift-memory-heap-primitives`](https://github.com/swift-primitives/swift-memory-heap-primitives) / [`swift-memory-allocation-primitives`](https://github.com/swift-primitives/swift-memory-allocation-primitives) / [`swift-memory-small-primitives`](https://github.com/swift-primitives/swift-memory-small-primitives) — the allocation leaves (`Memory.Heap`, `Memory.Allocator`, `Memory.Small<n>`) that back `Array<E>` and `Array<E>.Small<n>`.
-- [`swift-ownership-shared-primitives`](https://github.com/swift-primitives/swift-ownership-shared-primitives) — the copy-on-write box behind `Array<E>.Shared`.
-- [`swift-index-primitives`](https://github.com/swift-primitives/swift-index-primitives) / [`swift-collection-primitives`](https://github.com/swift-primitives/swift-collection-primitives) / [`swift-sequence-primitives`](https://github.com/swift-primitives/swift-sequence-primitives) — the indexing and iteration seams `Array<E>` conforms to.
+- [`swift-buffer`](https://github.com/swift-molecules/swift-buffer) / [`swift-buffer-linear`](https://github.com/swift-molecules/swift-buffer-linear) — the contiguous linear buffer the front doors pin to.
+- [`swift-storage`](https://github.com/swift-molecules/swift-storage) — the `Store.Protocol` / `Storage.Contiguous` seam the buffer is generic over.
+- [`swift-memory-heap`](https://github.com/swift-molecules/swift-memory-heap) / [`swift-memory-allocation`](https://github.com/swift-molecules/swift-memory-allocation) / [`swift-memory-small`](https://github.com/swift-molecules/swift-memory-small) — the allocation leaves (`Memory.Heap`, `Memory.Allocator`, `Memory.Small<n>`) that back `Array<E>` and `Array<E>.Small<n>`.
+- [`swift-ownership-shared`](https://github.com/swift-molecules/swift-ownership-shared) — the copy-on-write box behind `Array<E>.Shared`.
+- [`swift-index`](https://github.com/swift-molecules/swift-index) / [`swift-collection`](https://github.com/swift-molecules/swift-collection) / [`swift-sequence`](https://github.com/swift-molecules/swift-sequence) — the indexing and iteration seams `Array<E>` conforms to.
 
 ---
 

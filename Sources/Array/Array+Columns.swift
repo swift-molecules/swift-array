@@ -1,13 +1,13 @@
 public import Array_Primitive
 public import Buffer_Linear_Primitive
-public import Buffer_Linear_Primitives
+public import Buffer_Linear
 public import Buffer_Primitive
-public import Index_Primitives
+public import Index
 public import Memory_Allocator_Primitive
-public import Memory_Allocator_Protocol_Primitives
-public import Memory_Heap_Primitives
+public import Memory_Allocator_Protocol
+public import Memory_Heap
 public import Ownership_Shared_Primitive
-public import Storage_Contiguous_Primitives
+public import Storage_Contiguous
 
 extension __Array where S: ~Copyable {
 
@@ -59,7 +59,7 @@ extension __Array where S: ~Copyable {
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
         >
     {
-        let capacity: Index_Primitives.Index<E>.Count = keepingCapacity ? store.capacity : .zero
+        let capacity: Index.Index<E>.Count = keepingCapacity ? store.capacity : .zero
         self.store = Ownership.Shared(
             Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear(
                 minimumCapacity: capacity
@@ -73,14 +73,14 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public mutating func reserveCapacity<E: ~Copyable, Resource: Memory.Growable & ~Copyable>(
-        _ minimumCapacity: Index_Primitives.Index<E>.Count
+        _ minimumCapacity: Index.Index<E>.Count
     )
     where S == Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear {
         store.reserveCapacity(minimumCapacity)
     }
 
     @inlinable
-    public mutating func reserveCapacity<E>(_ minimumCapacity: Index_Primitives.Index<E>.Count)
+    public mutating func reserveCapacity<E>(_ minimumCapacity: Index.Index<E>.Count)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
@@ -92,14 +92,14 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public mutating func reallocate<E: ~Copyable>(
-        capacity newCapacity: Index_Primitives.Index<E>.Count
+        capacity newCapacity: Index.Index<E>.Count
     )
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
         store.reallocate(capacity: newCapacity)
     }
 
     @inlinable
-    public mutating func reallocate<E>(capacity newCapacity: Index_Primitives.Index<E>.Count)
+    public mutating func reallocate<E>(capacity newCapacity: Index.Index<E>.Count)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
@@ -118,7 +118,7 @@ extension __Array where S: ~Copyable {
     }
 
     @inlinable
-    public func clone<E>(capacity: Index_Primitives.Index<E>.Count) -> Self
+    public func clone<E>(capacity: Index.Index<E>.Count) -> Self
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
         Self(store: store.clone(capacity: capacity))
     }

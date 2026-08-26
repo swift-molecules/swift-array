@@ -1,17 +1,17 @@
 public import Array_Primitive
 public import Buffer_Linear_Primitive
 public import Buffer_Primitive
-public import Index_Primitives
+public import Index
 public import Memory_Allocator_Primitive
-public import Memory_Heap_Primitives
-public import Storage_Contiguous_Primitives
+public import Memory_Heap
+public import Storage_Contiguous
 
 extension __Array where S: ~Copyable {
 
     @inlinable
 
     public init<E: ~Copyable, Failure: Swift.Error>(
-        capacity: Index_Primitives.Index<E>.Count,
+        capacity: Index.Index<E>.Count,
         initializingWith initializer: (inout Swift.OutputSpan<E>) throws(Failure) -> Void
     ) throws(Failure)
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
@@ -26,7 +26,7 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public mutating func append<E: ~Copyable, Failure: Swift.Error>(
-        addingCapacity: Index_Primitives.Index<E>.Count,
+        addingCapacity: Index.Index<E>.Count,
         initializingWith initializer: (inout Swift.OutputSpan<E>) throws(Failure) -> Void
     ) throws(Failure)
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {

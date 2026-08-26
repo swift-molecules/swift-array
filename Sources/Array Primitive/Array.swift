@@ -1,11 +1,11 @@
 public import Buffer_Linear_Primitive
 public import Buffer_Primitive
-public import Index_Primitives
+public import Index
 public import Memory_Allocator_Primitive
-public import Memory_Allocator_Protocol_Primitives
-public import Memory_Heap_Primitives
+public import Memory_Allocator_Protocol
+public import Memory_Heap
 public import Ownership_Shared_Primitive
-public import Storage_Contiguous_Primitives
+public import Storage_Contiguous
 
 @_documentation(visibility: public)
 @frozen
@@ -38,14 +38,14 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public init<E: ~Copyable, Resource: Memory.Growable & ~Copyable>(
-        initialCapacity: Index_Primitives.Index<E>.Count = .zero
+        initialCapacity: Index.Index<E>.Count = .zero
     )
     where S == Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear {
         self.init(store: S(minimumCapacity: initialCapacity))
     }
 
     @inlinable
-    public init<E>(initialCapacity: Index_Primitives.Index<E>.Count = .zero)
+    public init<E>(initialCapacity: Index.Index<E>.Count = .zero)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
@@ -62,7 +62,7 @@ extension __Array where S: ~Copyable {
 
     @inlinable
 
-    public init<E: ~Copyable>(initialCapacity: Index_Primitives.Index<E>.Count = .zero)
+    public init<E: ~Copyable>(initialCapacity: Index.Index<E>.Count = .zero)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear

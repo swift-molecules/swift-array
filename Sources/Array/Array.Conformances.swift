@@ -1,11 +1,11 @@
 public import Array_Primitive
-public import Array_Protocol_Primitives
-public import Buffer_Linear_Primitives
-public import Buffer_Protocol_Primitives
+public import Array_Protocol
+public import Buffer_Linear
+public import Buffer_Protocol
 public import Iterable
-public import Iterator_Chunk_Primitives
-public import Span_Protocol_Primitives
-public import Store_Protocol_Primitives
+public import Iterator_Chunk
+public import Span_Protocol
+public import Store_Protocol
 
 extension __Array: Collection.Access.Random
 where S: Span.`Protocol` & Store.`Protocol` & Buffer.`Protocol` & ~Copyable {}

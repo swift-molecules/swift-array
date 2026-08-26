@@ -1,14 +1,14 @@
-import Array_Primitives
+import Array
 import Buffer_Linear_Primitive
-import Buffer_Linear_Primitives
+import Buffer_Linear
 import Buffer_Primitive
-import Index_Primitives
+import Index
 import Memory_Allocator_Primitive
-import Memory_Heap_Primitives
-import Ordinal_Primitives_Standard_Library_Integration
+import Memory_Heap
+import Ordinal_Standard_Library_Integration
 import Ownership_Shared_Primitive
-import Storage_Contiguous_Primitives
-import Tagged_Primitives_Standard_Library_Integration
+import Storage_Contiguous
+import Tagged_Standard_Library_Integration
 import Testing
 
 private struct Item: ~Copyable {
@@ -42,7 +42,7 @@ private typealias HeapColumn<E: ~Copyable> =
 
 private typealias SharedColumn<E: ~Copyable> = Ownership.Shared<E, HeapColumn<E>>
 
-private typealias MoveArray<E: ~Copyable> = Array_Primitives.Array<E>
+private typealias MoveArray<E: ~Copyable> = Array.Array<E>
 
 private typealias CoWArray<E: ~Copyable> = __Array<SharedColumn<E>>
 

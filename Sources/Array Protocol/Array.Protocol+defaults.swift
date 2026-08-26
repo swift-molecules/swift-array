@@ -1,4 +1,4 @@
-import Index_Primitives
+import Index
 
 extension __ArrayProtocol where Self: ~Copyable {
 
@@ -8,7 +8,7 @@ extension __ArrayProtocol where Self: ~Copyable {
     }
 }
 
-extension __ArrayProtocol where Self: ~Copyable, Index == Index_Primitives.Index<Element> {
+extension __ArrayProtocol where Self: ~Copyable, Index == Index.Index<Element> {
 
     @inlinable
     public var startIndex: Index { .zero }
