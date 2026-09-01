@@ -7,7 +7,7 @@ public import Memory_Allocator
 public import Memory_Allocator_Protocol
 public import Memory
 public import Ownership_Shared_Primitive
-public import Storage_Contiguous
+public import Storage
 
 extension __Array where S: ~Copyable {
 

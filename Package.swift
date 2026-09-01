@@ -24,6 +24,10 @@ let package = Package(
         .library(name: "Array Test Support", targets: ["Array Test Support"]),
     ],
     dependencies: [
+        .package(
+            url: "https://github.com/swift-atoms/swift-store.git",
+            branch: "main"
+        ),
 
         .package(
             url: "https://github.com/swift-molecules/swift-memory-small.git",
@@ -108,15 +112,12 @@ let package = Package(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Store Protocol", package: "swift-storage"),
+                .product(name: "Store Protocol", package: "swift-store"),
                 .product(
                     name: "Ownership Shared Primitive",
                     package: "swift-ownership-shared"
                 ),
-                .product(
-                    name: "Storage Contiguous",
-                    package: "swift-storage"
-                ),
+                .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(
                     name: "Memory Allocator",
@@ -148,11 +149,8 @@ let package = Package(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Store Protocol", package: "swift-storage"),
-                .product(
-                    name: "Storage Contiguous",
-                    package: "swift-storage"
-                ),
+                .product(name: "Store Protocol", package: "swift-store"),
+                .product(name: "Storage", package: "swift-storage"),
                 .product(
                     name: "Memory Allocator",
                     package: "swift-memory-allocation"
@@ -166,7 +164,7 @@ let package = Package(
             dependencies: [
                 "Array Primitive",
                 "Array Protocol",
-                .product(name: "Store Protocol", package: "swift-storage"),
+                .product(name: "Store Protocol", package: "swift-store"),
                 .product(
                     name: "Ownership Shared Primitive",
                     package: "swift-ownership-shared"
@@ -181,10 +179,7 @@ let package = Package(
                 ),
                 .product(name: "Buffer Protocol", package: "swift-buffer"),
                 .product(name: "Span Protocol", package: "swift-span"),
-                .product(
-                    name: "Storage Contiguous",
-                    package: "swift-storage"
-                ),
+                .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(
                     name: "Memory Iterator",
