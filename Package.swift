@@ -102,7 +102,7 @@ let package = Package(
         .target(
             name: "Array Primitive",
             dependencies: [
-                .product(name: "Buffer Primitive", package: "swift-buffer"),
+                .product(name: "Buffer", package: "swift-buffer"),
                 .product(name: "Buffer Protocol", package: "swift-buffer"),
                 .product(
                     name: "Buffer Linear Primitive",
@@ -143,7 +143,7 @@ let package = Package(
             name: "Array Small Primitive",
             dependencies: [
                 "Array Primitive",
-                .product(name: "Buffer Primitive", package: "swift-buffer"),
+                .product(name: "Buffer", package: "swift-buffer"),
                 .product(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
@@ -198,7 +198,7 @@ let package = Package(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Storage Primitive", package: "swift-storage"),
+                .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Collection", package: "swift-collection"),
                 .product(name: "Index", package: "swift-index"),
                 .product(name: "Sequence", package: "swift-sequence"),

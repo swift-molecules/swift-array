@@ -1,7 +1,7 @@
 import Array
 import Buffer_Linear_Primitive
 import Buffer_Linear
-import Buffer_Primitive
+import Buffer
 import Index
 import Memory_Allocator
 import Memory
