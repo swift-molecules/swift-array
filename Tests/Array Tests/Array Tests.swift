@@ -4,7 +4,7 @@ import Buffer_Linear
 import Buffer_Primitive
 import Index
 import Memory_Allocator_Primitive
-import Memory_Heap
+import Memory
 import Ordinal_Standard_Library_Integration
 import Ownership_Shared_Primitive
 import Storage_Contiguous
