@@ -1,7 +1,7 @@
 public import Array_Primitive
 public import Buffer_Linear_Primitive
 public import Buffer_Primitive
-public import Memory_Allocator_Primitive
+public import Memory_Allocator
 public import Memory_Small
 public import Storage_Contiguous
 public import Store_Protocol

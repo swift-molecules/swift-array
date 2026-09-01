@@ -3,7 +3,7 @@ public import Buffer_Linear_Primitive
 public import Buffer_Linear
 public import Buffer_Primitive
 public import Index
-public import Memory_Allocator_Primitive
+public import Memory_Allocator
 public import Memory_Allocator_Protocol
 public import Memory
 public import Ownership_Shared_Primitive
