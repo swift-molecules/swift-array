@@ -42,11 +42,11 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-index.git",
+            url: "https://github.com/swift-atoms/swift-index.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-collection.git",
+            url: "https://github.com/swift-atoms/swift-collection.git",
             branch: "main"
         ),
         .package(
@@ -68,19 +68,19 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-iterator.git",
+            url: "https://github.com/swift-atoms/swift-iterator.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-cardinal.git",
+            url: "https://github.com/swift-atoms/swift-cardinal.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-tagged.git",
+            url: "https://github.com/swift-atoms/swift-tagged.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-ordinal.git",
+            url: "https://github.com/swift-atoms/swift-ordinal.git",
             branch: "main"
         ),
         .package(
