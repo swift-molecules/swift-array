@@ -4,7 +4,7 @@ public import Buffer
 public import Memory_Allocator
 public import Memory_Small
 public import Storage
-public import Store_Protocol
+public import Store
 
 extension __Array where S: ~Copyable, S: Store.Direct {
 

@@ -1,8 +1,8 @@
 public import Array_Primitive
 public import Array_Protocol
-public import Buffer_Protocol
-public import Span_Protocol
-public import Store_Protocol
+public import Buffer
+public import Span
+public import Store
 
 extension __Array: Collection.`Protocol`
 where S: Span.`Protocol` & Store.`Protocol` & Buffer.`Protocol` & ~Copyable {}

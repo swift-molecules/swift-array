@@ -107,12 +107,11 @@ let package = Package(
             name: "Array Primitive",
             dependencies: [
                 .product(name: "Buffer", package: "swift-buffer"),
-                .product(name: "Buffer Protocol", package: "swift-buffer"),
                 .product(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Store Protocol", package: "swift-store"),
+                .product(name: "Store", package: "swift-store"),
                 .product(
                     name: "Ownership Shared Primitive",
                     package: "swift-ownership-shared"
@@ -149,7 +148,7 @@ let package = Package(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Store Protocol", package: "swift-store"),
+                .product(name: "Store", package: "swift-store"),
                 .product(name: "Storage", package: "swift-storage"),
                 .product(
                     name: "Memory Allocator",
@@ -164,7 +163,7 @@ let package = Package(
             dependencies: [
                 "Array Primitive",
                 "Array Protocol",
-                .product(name: "Store Protocol", package: "swift-store"),
+                .product(name: "Store", package: "swift-store"),
                 .product(
                     name: "Ownership Shared Primitive",
                     package: "swift-ownership-shared"
@@ -177,8 +176,8 @@ let package = Package(
                     name: "Memory Allocator Protocol",
                     package: "swift-memory-allocation"
                 ),
-                .product(name: "Buffer Protocol", package: "swift-buffer"),
-                .product(name: "Span Protocol", package: "swift-span"),
+                .product(name: "Buffer", package: "swift-buffer"),
+                .product(name: "Span", package: "swift-span"),
                 .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(
@@ -193,12 +192,10 @@ let package = Package(
                     name: "Buffer Linear Primitive",
                     package: "swift-buffer-linear"
                 ),
-                .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Collection", package: "swift-collection"),
                 .product(name: "Index", package: "swift-index"),
                 .product(name: "Sequence", package: "swift-sequence"),
-                .product(name: "Iterable", package: "swift-iterator"),
-                .product(name: "Iterator Chunk", package: "swift-iterator"),
+                .product(name: "Iterator", package: "swift-iterator"),
                 .product(name: "Ordinal", package: "swift-ordinal"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(
