@@ -28,7 +28,7 @@ extension __Array: Span.`Protocol` where S: Span.`Protocol` & ~Copyable {
 extension __Array: Iterable where S: Span.`Protocol` & ~Copyable {
 
     @_implements(Iterable,Iterator)
-    public typealias IterableIterator = Iterator_Primitive.Iterator.Chunk<S.Element>
+    public typealias IterableIterator = Iterator::Iterator.Chunk<S.Element>
 }
 
 extension __Array: Sequenceable where S: Sequenceable & ~Copyable, S.Iterator: Escapable {
