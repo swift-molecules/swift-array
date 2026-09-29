@@ -3,7 +3,7 @@ public import Buffer_Linear_Primitive
 public import Buffer
 public import Index
 public import Memory_Allocator
-import Memory_Allocator_Protocol
+public import Memory_Allocator_Protocol
 public import Memory
 public import Storage
 public import Cardinal
