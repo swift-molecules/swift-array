@@ -6,6 +6,8 @@ public import Memory_Allocator_Protocol
 public import Memory
 public import Ownership_Shared_Primitive
 public import Storage
+public import Cardinal
+public import Tagged
 
 @_documentation(visibility: public)
 @frozen
@@ -38,14 +40,14 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public init<E: ~Copyable, Resource: Memory.Growable & ~Copyable>(
-        initialCapacity: Index.Index<E>.Count = .zero
+        initialCapacity: Tagged<E, Cardinal> = .zero
     )
     where S == Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear {
         self.init(store: S(minimumCapacity: initialCapacity))
     }
 
     @inlinable
-    public init<E>(initialCapacity: Index.Index<E>.Count = .zero)
+    public init<E>(initialCapacity: Tagged<E, Cardinal> = .zero)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
@@ -62,7 +64,7 @@ extension __Array where S: ~Copyable {
 
     @inlinable
 
-    public init<E: ~Copyable>(initialCapacity: Index.Index<E>.Count = .zero)
+    public init<E: ~Copyable>(initialCapacity: Tagged<E, Cardinal> = .zero)
     where
         S == Ownership.Shared<
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear

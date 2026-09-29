@@ -28,19 +28,9 @@ let package = Package(
             url: "https://github.com/swift-atoms/swift-store.git",
             branch: "main"
         ),
-
-        .package(
-            url: "https://github.com/swift-molecules/swift-memory-small.git",
-            branch: "main"
-        ),
         .package(
             url: "https://github.com/swift-atoms/swift-span.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-memory-iterator.git",
-            branch: "main"
-        ),
+            branch: "main", traits: ["Iterator"]),
         .package(
             url: "https://github.com/swift-atoms/swift-standard-library-extensions.git",
             branch: "main"
@@ -69,8 +59,7 @@ let package = Package(
 
         .package(
             url: "https://github.com/swift-atoms/swift-storage.git",
-            branch: "main"
-        ),
+            branch: "main", traits: ["Memory"]),
         .package(
             url: "https://github.com/swift-atoms/swift-iterator.git",
             branch: "main"
@@ -98,14 +87,15 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swift-molecules/swift-memory-allocation.git",
-            branch: "main"
-        ),
+            branch: "main", traits: ["MemorySmall"]),
     ],
     targets: [
 
         .target(
             name: "Array Primitive",
             dependencies: [
+                .product(name: "Tagged", package: "swift-tagged"),
+                .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(name: "Buffer", package: "swift-buffer"),
                 .product(
                     name: "Buffer Linear Primitive",
@@ -133,6 +123,8 @@ let package = Package(
         .target(
             name: "Array Protocol",
             dependencies: [
+                .product(name: "Tagged", package: "swift-tagged"),
+                .product(name: "Cardinal", package: "swift-cardinal"),
                 "Array Primitive",
                 .product(name: "Collection", package: "swift-collection"),
                 .product(name: "Index", package: "swift-index"),
@@ -154,13 +146,14 @@ let package = Package(
                     name: "Memory Allocator",
                     package: "swift-memory-allocation"
                 ),
-                .product(name: "Memory Small", package: "swift-memory-small"),
+                .product(name: "Memory Small", package: "swift-memory-allocation"),
             ]
         ),
 
         .target(
             name: "Array",
             dependencies: [
+                .product(name: "Tagged", package: "swift-tagged"),
                 "Array Primitive",
                 "Array Protocol",
                 .product(name: "Store", package: "swift-store"),
@@ -180,10 +173,6 @@ let package = Package(
                 .product(name: "Span", package: "swift-span"),
                 .product(name: "Storage", package: "swift-storage"),
                 .product(name: "Memory", package: "swift-memory"),
-                .product(
-                    name: "Memory Iterator",
-                    package: "swift-memory-iterator"
-                ),
                 .product(
                     name: "Buffer Linear",
                     package: "swift-buffer-linear"
@@ -213,6 +202,7 @@ let package = Package(
                     name: "Buffer Test Support",
                     package: "swift-buffer"
                 ),
+                .product(name: "Ordinal Test Support", package: "swift-ordinal"),
             ],
             path: "Tests/Support"
         ),

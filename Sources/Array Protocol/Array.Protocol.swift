@@ -1,10 +1,12 @@
 import Array_Primitive
 public import Collection
+public import Cardinal
+public import Tagged
 
 @_documentation(visibility: public)
 public protocol Indexable: Collection.Bidirectional & ~Copyable {
 
-    var count: Index.Index<Element>.Count { get }
+    var count: Tagged<Element, Cardinal> { get }
 
     subscript(_ position: Index) -> Element { get set }
 }

@@ -5,13 +5,15 @@ public import Index
 public import Memory_Allocator
 public import Memory
 public import Storage
+public import Cardinal
+public import Tagged
 
 extension __Array where S: ~Copyable {
 
     @inlinable
 
     public init<E: ~Copyable, Failure: Swift.Error>(
-        capacity: Index.Index<E>.Count,
+        capacity: Tagged<E, Cardinal>,
         initializingWith initializer: (inout Swift.OutputSpan<E>) throws(Failure) -> Void
     ) throws(Failure)
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
@@ -26,7 +28,7 @@ extension __Array where S: ~Copyable {
     @inlinable
 
     public mutating func append<E: ~Copyable, Failure: Swift.Error>(
-        addingCapacity: Index.Index<E>.Count,
+        addingCapacity: Tagged<E, Cardinal>,
         initializingWith initializer: (inout Swift.OutputSpan<E>) throws(Failure) -> Void
     ) throws(Failure)
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
