@@ -132,7 +132,7 @@ extension __Array where S: ~Copyable {
     @_lifetime(&self)
     public mutating func mutableSpan<E: ~Copyable>() -> Swift.MutableSpan<E>
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
-        store.mutableSpan
+        store.mutableSpan()
     }
 
     @inlinable
