@@ -3,6 +3,10 @@ public import Array_Protocol
 public import Buffer
 public import Span
 public import Store
+public import Sequence
+
+extension __Array: Sequence.Borrowing.`Protocol`
+where S: Span.`Protocol` & Store.`Protocol` & Buffer.`Protocol` & ~Copyable {}
 
 extension __Array: Collection.`Protocol`
 where S: Span.`Protocol` & Store.`Protocol` & Buffer.`Protocol` & ~Copyable {}
