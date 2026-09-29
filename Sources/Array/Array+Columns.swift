@@ -130,30 +130,30 @@ extension __Array where S: ~Copyable {
 
     @inlinable
     @_lifetime(&self)
-    public mutating func mutableSpan<E: ~Copyable>() -> Swift.MutableSpan<E>
-    where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {
+    public mutating func mutableSpan<E: ~Copyable, Resource: Memory.Region & ~Copyable>() -> Swift.MutableSpan<E>
+    where S == Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear {
         store.mutableSpan()
     }
 
     @inlinable
-    public func withSpan<E, R, Failure: Swift.Error>(
+    public func withSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift.Error>(
         _ body: (Swift.Span<E>) throws(Failure) -> R
     ) throws(Failure) -> R
     where
         S == Ownership.Shared<
-            E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
+            E, Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear
         >
     {
         try store.withSpan(body)
     }
 
     @inlinable
-    public mutating func withMutableSpan<E, R, Failure: Swift.Error>(
+    public mutating func withMutableSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift.Error>(
         _ body: (inout Swift.MutableSpan<E>) throws(Failure) -> R
     ) throws(Failure) -> R
     where
         S == Ownership.Shared<
-            E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
+            E, Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear
         >
     {
         try store.withMutableSpan(body)
