@@ -304,7 +304,7 @@ struct `Array Tests` {
 
                 for stride in 1...5 {
                     var a = MoveArray<Int>(initialCapacity: try Index<Int>.Count(size))
-                    var model: [Int] = Swift.Array(0..<size)
+                    var model: [Int] = Swift::Array(0..<size)
                     for value in model {
                         a.append(value)
                     }
@@ -331,7 +331,7 @@ struct `Array Tests` {
         func `drain sweeps every size under growth and mixed prior operations`() {
             (0...12).forEach { size in
                 var a = MoveArray<Int>(initialCapacity: 2)
-                var model: [Int] = Swift.Array(0..<size)
+                var model: [Int] = Swift::Array(0..<size)
                 for value in model {
                     a.append(value)
                 }

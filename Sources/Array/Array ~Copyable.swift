@@ -113,7 +113,7 @@ extension __Array where S: ~Copyable, S: Store.`Protocol` & Buffer.`Protocol` {
         while position < frontier.map(Ordinal.init) {
             frontier = frontier.subtract.saturating(.one)
             let slot: Index = frontier.map(Ordinal.init)
-            Swift.swap(&carry, &store[slot])
+            Swift::swap(&carry, &store[slot])
         }
         return carry
     }

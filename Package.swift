@@ -125,7 +125,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Tagged", package: "swift-tagged"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
-                "Array Primitive",
+                .target(name: "Array Primitive"),
                 .product(name: "Collection", package: "swift-collection"),
                 .product(name: "Index", package: "swift-index"),
             ]
@@ -134,7 +134,7 @@ let package = Package(
         .target(
             name: "Array Small Primitive",
             dependencies: [
-                "Array Primitive",
+                .target(name: "Array Primitive"),
                 .product(name: "Buffer", package: "swift-buffer"),
                 .product(
                     name: "Buffer Linear Primitive",
@@ -154,8 +154,8 @@ let package = Package(
             name: "Array",
             dependencies: [
                 .product(name: "Tagged", package: "swift-tagged"),
-                "Array Primitive",
-                "Array Protocol",
+                .target(name: "Array Primitive"),
+                .target(name: "Array Protocol"),
                 .product(name: "Store", package: "swift-store"),
                 .product(
                     name: "Ownership Shared Primitive",
@@ -197,7 +197,7 @@ let package = Package(
         .target(
             name: "Array Test Support",
             dependencies: [
-                "Array",
+                .target(name: "Array"),
                 .product(
                     name: "Buffer Test Support",
                     package: "swift-buffer"
@@ -210,8 +210,8 @@ let package = Package(
         .testTarget(
             name: "Array Tests",
             dependencies: [
-                "Array",
-                "Array Test Support",
+                .target(name: "Array"),
+                .target(name: "Array Test Support"),
                 .product(
                     name: "Tagged",
                     package: "swift-tagged"
@@ -227,17 +227,14 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    let ecosystem: [SwiftSetting] = [
+    target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableExperimentalFeature("Lifetimes"),
         .enableUpcomingFeature("InferIsolatedConformances"),
+        .enableExperimentalFeature("Lifetimes"),
+        .treatAllWarnings(as: .error),
     ]
-
-    let package: [SwiftSetting] = []
-
-    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }

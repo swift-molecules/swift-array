@@ -2,7 +2,7 @@ public import Array_Primitive
 public import Buffer_Linear_Primitive
 public import Buffer_Linear
 public import Buffer
-public import Index
+internal import Index
 public import Memory_Allocator
 public import Memory_Allocator_Protocol
 public import Memory
@@ -130,14 +130,14 @@ extension __Array where S: ~Copyable {
 
     @inlinable
     @_lifetime(&self)
-    public mutating func mutableSpan<E: ~Copyable, Resource: Memory.Region & ~Copyable>() -> Swift.MutableSpan<E>
+    public mutating func mutableSpan<E: ~Copyable, Resource: Memory.Region & ~Copyable>() -> Swift::MutableSpan<E>
     where S == Buffer<Storage<Memory.Allocator<Resource>>.Contiguous<E>>.Linear {
         store.mutableSpan()
     }
 
     @inlinable
-    public func withSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift.Error>(
-        _ body: (Swift.Span<E>) throws(Failure) -> R
+    public func withSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift::Error>(
+        _ body: (Swift::Span<E>) throws(Failure) -> R
     ) throws(Failure) -> R
     where
         S == Ownership.Shared<
@@ -148,8 +148,8 @@ extension __Array where S: ~Copyable {
     }
 
     @inlinable
-    public mutating func withMutableSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift.Error>(
-        _ body: (inout Swift.MutableSpan<E>) throws(Failure) -> R
+    public mutating func withMutableSpan<E, Resource: Memory.Region & ~Copyable, R, Failure: Swift::Error>(
+        _ body: (inout Swift::MutableSpan<E>) throws(Failure) -> R
     ) throws(Failure) -> R
     where
         S == Ownership.Shared<
@@ -165,7 +165,7 @@ extension __Array where S: ~Copyable {
 
     @unsafe
     @inlinable
-    public func withUnsafeBufferPointer<E, R, Failure: Swift.Error>(
+    public func withUnsafeBufferPointer<E, R, Failure: Swift::Error>(
         _ body: (UnsafeBufferPointer<E>) throws(Failure) -> R
     ) throws(Failure) -> R
     where S == Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear {

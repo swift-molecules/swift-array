@@ -1,6 +1,6 @@
 public import Array_Primitive
 public import Array_Protocol
-public import Buffer_Linear
+internal import Buffer_Linear
 public import Buffer
 public import Iterator
 public import Span
@@ -17,7 +17,7 @@ extension __Array where S: ~Copyable {
 extension __Array: Span.`Protocol` where S: Span.`Protocol` & ~Copyable {
 
     @inlinable
-    public var span: Swift.Span<S.Element> {
+    public var span: Swift::Span<S.Element> {
         @_lifetime(borrow self)
         borrowing get {
             store.span
