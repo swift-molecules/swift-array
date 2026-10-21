@@ -1,11 +1,11 @@
 @_spi(Unsafe) import Array
+import Buffer
 import Buffer_Linear_Bounded
 import Buffer_Linear_Primitive
-import Buffer
 import Buffer_Test_Support
 import Index
-import Memory_Allocator
 import Memory
+import Memory_Allocator
 import Ordinal
 import Ownership_Shared_Primitive
 import Storage
@@ -17,7 +17,7 @@ private typealias HeapColumn<E: ~Copyable> =
 
 private typealias SharedColumn<E: ~Copyable> = Ownership.Shared<E, HeapColumn<E>>
 
-private typealias MoveArray<E: ~Copyable> = Array::Array<E>
+private typealias MoveArray<E: ~Copyable> = [E]
 
 private typealias CoWArray<E: ~Copyable> = __Array<SharedColumn<E>>
 

@@ -1,12 +1,12 @@
-public import Buffer_Linear_Primitive
 public import Buffer
+public import Buffer_Linear_Primitive
+public import Cardinal
 internal import Index
+public import Memory
 public import Memory_Allocator
 public import Memory_Allocator_Protocol
-public import Memory
 public import Ownership_Shared_Primitive
 public import Storage
-public import Cardinal
 public import Tagged
 
 @_documentation(visibility: public)

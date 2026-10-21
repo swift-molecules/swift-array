@@ -22,6 +22,10 @@ extension __ArrayProtocol where Self: ~Copyable, Index == Index::Index<Element> 
     @inlinable
     public func index(before i: Index) -> Index {
 
-        try! i.predecessor.exact()
+        do {
+            return try i.predecessor.exact()
+        } catch {
+            preconditionFailure("Index has a predecessor: \(error)")
+        }
     }
 }

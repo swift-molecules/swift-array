@@ -1,9 +1,9 @@
 public import Array_Primitive
 public import Array_Protocol
 public import Buffer
+public import Sequence
 public import Span
 public import Store
-public import Sequence
 
 extension __Array: Sequence.Borrowing.`Protocol`
 where S: Span.`Protocol` & Store.`Protocol` & Buffer.`Protocol` & ~Copyable {}
@@ -95,8 +95,12 @@ extension __Array where S: ~Copyable, S: Store.`Protocol` & Buffer.`Protocol` {
         store.unshare()
         let end: Index = count.map(Ordinal.init)
 
-        let last = try! end.predecessor.exact()
-        return store.move(at: last)
+        do {
+            let last = try end.predecessor.exact()
+            return store.move(at: last)
+        } catch {
+            preconditionFailure("Non-empty array has a last index: \(error)")
+        }
     }
 
     @inlinable
@@ -141,8 +145,12 @@ extension __Array where S: ~Copyable, S: Store.`Protocol` & Buffer.`Protocol` {
         while !isEmpty {
             let end: Index = count.map(Ordinal.init)
 
-            let last = try! end.predecessor.exact()
-            body(store.move(at: last))
+            do {
+                let last = try end.predecessor.exact()
+                body(store.move(at: last))
+            } catch {
+                preconditionFailure("Non-empty array has a last index: \(error)")
+            }
         }
     }
 }

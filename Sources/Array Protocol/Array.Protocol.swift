@@ -1,6 +1,6 @@
 import Array_Primitive
-public import Collection
 public import Cardinal
+public import Collection
 public import Tagged
 
 @_documentation(visibility: public)

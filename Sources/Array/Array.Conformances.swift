@@ -1,7 +1,7 @@
 public import Array_Primitive
 public import Array_Protocol
-internal import Buffer_Linear
 public import Buffer
+internal import Buffer_Linear
 public import Iterator
 public import Span
 public import Store

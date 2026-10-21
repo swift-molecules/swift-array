@@ -1,12 +1,12 @@
 public import Array_Primitive
-public import Buffer_Linear_Primitive
 public import Buffer
+public import Buffer_Linear_Primitive
+public import Cardinal
 internal import Index
+public import Memory
 public import Memory_Allocator
 public import Memory_Allocator_Protocol
-public import Memory
 public import Storage
-public import Cardinal
 public import Tagged
 
 extension __Array where S: ~Copyable {
