@@ -42,7 +42,6 @@ private typealias HeapColumn<E: ~Copyable> =
 
 private typealias SharedColumn<E: ~Copyable> = Ownership.Shared<E, HeapColumn<E>>
 
-// swift-format-ignore: UseShorthandTypeNames
 private typealias MoveArray<E: ~Copyable> = Array::Array<E>
 
 private typealias CoWArray<E: ~Copyable> = __Array<SharedColumn<E>>
