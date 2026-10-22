@@ -412,7 +412,7 @@ struct `Array Tests` {
             a.append(3)
             var sum = 0
             do {
-                let span = a.span
+                let span: Swift::Span<Int> = a.span
 
                 for i in 0..<span.count { sum += span[i] }
             }
