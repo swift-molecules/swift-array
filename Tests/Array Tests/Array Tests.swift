@@ -498,7 +498,9 @@ struct `Array Tests` {
                 let total = latticeSum(a)
                 #expect(total == 60)
                 var walked = 0
-                a.forEach { walked += $0.value }
+                a.forEach { (item: borrowing Item) in
+                    walked += item.value
+                }
                 #expect(walked == 60)
             }
             let ds = Probe.destroyedSorted
