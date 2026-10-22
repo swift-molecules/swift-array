@@ -473,16 +473,16 @@ struct `Array Tests` {
             a.append(10)
             a.append(20)
             a.append(30)
-            let start = a.startIndex
-            let end = a.endIndex
+            let start: Index<Int> = a.startIndex
+            let end: Index<Int> = a.endIndex
             var walked: [Int] = []
-            var i = start
+            var i: Index<Int> = start
             while i < end {
                 walked.append(a[i])
                 i = a.index(after: i)
             }
             #expect(walked == [10, 20, 30])
-            let back = a.index(before: end)
+            let back: Index<Int> = a.index(before: end)
             let lastValue = a[back]
             #expect(lastValue == 30)
         }
