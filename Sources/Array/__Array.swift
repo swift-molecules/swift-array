@@ -38,6 +38,9 @@ extension __Array where S: ~Copyable {
             E, Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<E>>.Linear
         >
     {
+        // Sound in every build configuration: `Ownership.Shared` is `Copyable`
+        // only where `Element: Copyable`, so a move-only column cannot be
+        // copied and its box is always uniquely referenced here.
         store.appendAssumingUnique(element)
     }
 }

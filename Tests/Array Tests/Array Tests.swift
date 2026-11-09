@@ -231,6 +231,17 @@ struct `Array Tests` {
         }
 
         @Test
+        func `move-only shared column appends while unique`() {
+            var a = CoWArray<Item>(initialCapacity: 1)
+            a.append(Item(1, value: 10))
+            a.append(Item(2, value: 20))
+            let count = a.count
+            #expect(count == Index<Item>.Count(2))
+            let v1 = a.withElement(at: 1) { $0.value }
+            #expect(v1 == 20)
+        }
+
+        @Test
         func `generic clone always detaches the CoW column`() {
             var a = CoWArray<Int>(initialCapacity: 2)
             a.append(1)
